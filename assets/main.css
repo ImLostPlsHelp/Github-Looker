@@ -14,9 +14,23 @@ header {
     background-color: dodgerblue;
 }
 
+main {
+    width: 1400px;
+    max-width: 100%;
+    margin: auto auto;
+}
+
 .header-content {
     display: flex;
     align-items: center;
     color: white;
     gap: 10px;
+}
+
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
 }
