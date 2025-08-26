@@ -1,7 +1,24 @@
 // example url :  "url": "https://api.github.com/users/kamranahmedse",
 
-const API_URL = "https://api.github.com/users/";
-
 export async function getUser(username) {
-    
+    try {
+        const fetchResponse = await fetch(`https://api.github.com/users/${username}`, {
+            method: "GET",
+        });
+        const json = await fetchResponse.json();
+
+        const result = JSON.stringify(json);
+
+        console.log(result);
+
+        return {
+            ...json,
+            ok: fetchResponse.ok,
+        };
+    } catch (error) {
+        return {
+            ok: false,
+            message: error.message,
+        };
+    }
 }
