@@ -2,11 +2,25 @@ import { getUser } from "./api.js"; //Jangan lupa ekstensi
 
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("user-search");
-    form.addEventListener("submit", function(event) {
+    const resultContainer = document.getElementById("result-container");
+    form.addEventListener("submit", async function(event) {
         event.preventDefault();
         const inputUser = document.getElementById("input-user").value;
-        console.log(inputUser);
-        getUser(inputUser);
+        const result = await getUser(inputUser); //Taruh await biar dia nunggu promise selesai
+
+        if(result) {
+            console.log(result.login);
+            const newElement = document.createElement("div");
+            newElement.innerHTML = `
+            <h3>${result.login}</h3>
+            <p>${result.followers}</p>
+            <img src="${result.avatar_url}" alt="${result.login}'s avatar">
+            <a href="${result.html_url}" target="_blank"><button>Profile Page</button></a>
+            `
+            resultContainer.appendChild(newElement);
+        } else {
+            console.log("Gak ada hasil brok");
+        }
    });
 })
 

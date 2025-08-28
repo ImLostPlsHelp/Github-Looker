@@ -7,10 +7,6 @@ export async function getUser(username) {
         });
         const json = await fetchResponse.json();
 
-        const result = JSON.stringify(json);
-
-        console.log(result);
-
         return {
             ...json,
             ok: fetchResponse.ok,
