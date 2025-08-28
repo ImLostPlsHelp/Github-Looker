@@ -11,9 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if(result) {
             console.log(result.login);
             const newElement = document.createElement("div");
+            newElement.classList.add("result-card");
             newElement.innerHTML = `
             <h3>${result.login}</h3>
-            <p>${result.followers}</p>
+            <p>${result.followers} followers</p>
             <img src="${result.avatar_url}" alt="${result.login}'s avatar">
             <a href="${result.html_url}" target="_blank"><button>Profile Page</button></a>
             `
